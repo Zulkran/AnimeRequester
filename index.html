@@ -10,17 +10,16 @@
 </head>
 
 <body class="bg-gray-100">
+    <h1 class="font-bold text-center text-6xl m-4">Anime Requester</h1>
     <div class="bg-white rounded-lg m-auto mt-6 text-center p-2 w-1/2 shadow-lg">
         <div class="m-8">
-            <label for="cars">Choose a category : </label>
             <select name="category" id="category" class="ml-2 p-2 border rounded-lg p-1">
-                <option value="title">Search by title</option>
-                <option value="type">Search by type</option>
+                <option value="title">Title</option>
+                <option value="type">Genre</option>
+                <option value="byId">ID</option>
+                <option value="rank">Ranking</option>
             </select>
-        </div>
-        <div class="m-8">
-            <label for="site-search">Search your anime:</label>
-            <input type="search" id="site-search" placeholder="Naruto..." name="animeSearch" class="ml-2 p-2 border-dotted border-black rounded-lg" />
+            <input type="search" id="site-search" placeholder="Naruto..." name="animeSearch" class="ml-2 w-1/2 p-2 border rounded-lg" />
         </div>
         <div>
             <button id="searchButton" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search</button>
@@ -28,10 +27,7 @@
         </div>
     </div>
 
-    <div id="anime-content" class="bg-white rounded-lg m-8 text-center p-2 shadow-lg">
-        <div id= ""class="bg-gray-100 rounded-lg m-4 text-center p-2 shadow-lg">
-            test
-        </div>
+    <div id="anime-content" class="bg-white rounded-lg m-8 p-2 shadow-lg">
     </div>
 </body>
 
