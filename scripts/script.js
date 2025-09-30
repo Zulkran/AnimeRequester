@@ -1,10 +1,10 @@
-let typeSearch = 0;
+let typeSearch;
 let input = document.getElementById("input");
-
+let searchButton = document.getElementById("searchButton");
 
 async function animeSearch() {
     let url;
-
+    typeSearch = document.getElementById('category').value;
     const options = {
         method: 'GET',
         headers: {
@@ -13,18 +13,18 @@ async function animeSearch() {
         }
     };
 
-    if (typeSearch == 0) {
-        url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${input}`;
+    if (typeSearch == 'title') {
+        url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${input.textContent}`;
 
     }
-    else if (typeSearch == 1) {
-        url = `https://anime-db.p.rapidapi.com/${input}`
+    else if (typeSearch == 'type') {
+        url = `https://anime-db.p.rapidapi.com/${input.textContent}`
     }
     else if (typeSearch == 2) {
-        url = `https://anime-db.p.rapidapi.com/anime/by-id/${input}`
+        url = `https://anime-db.p.rapidapi.com/anime/by-id/${input.textContent}`
     }
     else if (typeSearch == 3) {
-        url = `https://anime-db.p.rapidapi.com/anime/by-ranking/${input}`
+        url = `https://anime-db.p.rapidapi.com/anime/by-ranking/${input.textContent}`
     }
 
     try {
@@ -37,5 +37,8 @@ async function animeSearch() {
 }
 
 async function findAnime(){
-    
+    result;
 }
+
+searchButton.addEventListener("click", () => findAnime());
+
