@@ -40,5 +40,15 @@ async function findAnime(){
     result;
 }
 
+function addAnimeCard(title, imgPath, desc){
+    document.getElementById('anime-content').innerHTML 
+    += 
+    `<div id= ""class="bg-gray-100 rounded-lg m-4 text-center p-2 shadow-lg">
+        <h1>${title}<\h1>
+        <img src = "${imgPath}"\>
+        <p>${desc}<\p>
+    </div>`
+}
+
 searchButton.addEventListener("click", () => findAnime());
 
