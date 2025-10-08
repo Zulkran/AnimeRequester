@@ -2,6 +2,8 @@ let typeSearch;
 let inputSearch;
 const searchButton = document.getElementById("searchButton");
 const eraseButton = document.getElementById("eraseButton");
+const darkButton = document.getElementById("darkSwtich");
+const animeContent = document.getElementById('anime-content');
 
 async function animeSearch() {
     let url;
@@ -38,12 +40,13 @@ async function animeSearch() {
     }
 }
 
-async function findAnime(){
+async function findAnime() {
     clearAnime();
+    animeContent.classList.remove("hidden");
     let result = await animeSearch();
     if (typeSearch == 'title') {
         result = result.data;
-        for(let data of result) {
+        for (let data of result) {
             addAnimeCard(data.title, data.image, data.synopsis, data.genres, data.ranking, data.episodes);
         }
     }
@@ -52,22 +55,31 @@ async function findAnime(){
     }
 }
 
-function addAnimeCard(title, imgPath, desc, type, rank, nbrEpisode){
-    document.getElementById('anime-content').innerHTML 
-    += 
-    `<div class="justify-center text-center align-center bg-gray-100 rounded-lg m-4 p-2 shadow-lg">
-        <h1 class="font-bold">${title}<\h1>
-        <img src = "${imgPath}"\>
-        <p>The synopsis is : ${desc}<\p>
-        <p>Genre : ${type}<\p>
-        <p>Rank : ${rank}<\p>
-        <p>Number of episode : ${nbrEpisode}<\p>
+function addAnimeCard(title, imgPath, desc, type, rank, nbrEpisode) {
+    animeContent.innerHTML
+        +=
+        `<div class="bg-[#ece0d1] text-center rounded-lg m-4 p-2 shadow-lg">
+        <h1 class="font-bold text-3xl my-2">${title}<\h1>
+        <img class="mx-auto my-2 w-sm rounded-md" src = "${imgPath}"\>
+        <p class="text-left mt-2"><strong>The synopsis is :</strong><\p>
+        <p class="text-justify mb-2">${desc}<\p>
+        <p class="my-2"><strong>Genre :</strong> ${type}<\p>
+        <p class="my-2"><strong>Rank :</strong> ${rank}<\p>
+        <p class="my-2"><strong>Number of episode :</strong> ${nbrEpisode}<\p>
     </div>`;
 }
 
 function clearAnime() {
     document.getElementById('anime-content').innerHTML = null;
+    animeContent.classList.add("hidden");
+}
+
+function switchTheme() {
+    console.log("click");
+    document.documentElement.classList.add('dark');
 }
 
 searchButton.addEventListener("click", () => findAnime());
 eraseButton.addEventListener("click", () => clearAnime());
+
+darkButton.addEventListener("click", () => switchTheme());
