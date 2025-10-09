@@ -1,9 +1,9 @@
-let typeSearch;
-let inputSearch;
+import {animeContent, addAnimeCard, clearAnime} from './addCard.js';
 const searchButton = document.getElementById("searchButton");
 const eraseButton = document.getElementById("eraseButton");
-const darkButton = document.getElementById("darkSwtich");
-const animeContent = document.getElementById('anime-content');
+
+let typeSearch;
+let inputSearch;
 
 async function animeSearch() {
     let url;
@@ -55,31 +55,4 @@ async function findAnime() {
     }
 }
 
-function addAnimeCard(title, imgPath, desc, type, rank, nbrEpisode) {
-    animeContent.innerHTML
-        +=
-        `<div class="bg-[#ece0d1] text-center rounded-lg m-4 p-2 shadow-lg">
-        <h1 class="font-bold text-3xl my-2">${title}<\h1>
-        <img class="mx-auto my-2 w-sm rounded-md" src = "${imgPath}"\>
-        <p class="text-left mt-2"><strong>The synopsis is :</strong><\p>
-        <p class="text-justify mb-2">${desc}<\p>
-        <p class="my-2"><strong>Genre :</strong> ${type}<\p>
-        <p class="my-2"><strong>Rank :</strong> ${rank}<\p>
-        <p class="my-2"><strong>Number of episode :</strong> ${nbrEpisode}<\p>
-    </div>`;
-}
-
-function clearAnime() {
-    document.getElementById('anime-content').innerHTML = null;
-    animeContent.classList.add("hidden");
-}
-
-function switchTheme() {
-    console.log("click");
-    document.documentElement.classList.add('dark');
-}
-
-searchButton.addEventListener("click", () => findAnime());
-eraseButton.addEventListener("click", () => clearAnime());
-
-darkButton.addEventListener("click", () => switchTheme());
+export { searchButton,eraseButton,animeSearch,findAnime };
