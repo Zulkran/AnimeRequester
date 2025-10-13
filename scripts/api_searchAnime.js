@@ -10,7 +10,7 @@ let inputSearch;
 
 async function animeSearch() {
     const APIKey = sessionStorage.getItem('userKey');
-    if(APIKey == null || APIKey.length == 0) {
+    if(APIKey == null || APIKey.length < 1) {
         return null;
     }
     let url;

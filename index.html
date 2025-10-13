@@ -7,7 +7,7 @@
     <title>Anime Requester</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/ed4b06e923.js" crossorigin="anonymous"></script>
-    <script type="module" src="./scripts/main.js"></script>
+    <script defer type="module" src="./scripts/main.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -16,10 +16,21 @@
 </head>
 
 <body class="bg-[#dbc1ac] dark:bg-[#634832]">
+    <!-- API Button -->
+    <div class="relative m-8">
+        <div class="absolute top-0 left-0">
+            <button class="h-12 w-12 rounded-lg p-2 shadow-md dark:shadow-white hover:bg-gray-100 dark:hover:bg-gray-700" id="APIButton">
+                <i class="fa-solid fa-key fa-xl"></i>
+            </button>
+            <div class="m-4 p-4 bg-gray-100 dark:bg-gray-700 dark:text-white border rounded-lg shadow-md dark:shadow-white" id="promptPath">
+            </div>
+        </div>
+    </div>
+
     <!-- Dark Mode Button -->
     <div class="relative m-8">
         <div class="absolute top-0 right-0">
-            <button class="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700" id="darkModeButton">
+            <button class="h-12 w-12 rounded-lg p-2 shadow-md dark:shadow-white hover:bg-gray-100 dark:hover:bg-gray-700" id="darkModeButton">
                 <svg class="fill-violet-700 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                 </svg>
