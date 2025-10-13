@@ -1,6 +1,9 @@
-import {animeContent, addAnimeCard, clearAnime} from './addCard.js';
+import { animeContent, addAnimeCard, clearAnime } from './addCard.js';
 const searchButton = document.getElementById("searchButton");
 const eraseButton = document.getElementById("eraseButton");
+const genresTab = ["Action", "Suspense", "Horror", "Ecchi", "AvantGarde", "Sports", "Supernatural",
+    "Fantasy", "BoysLove", "Drama", "Comedy", "Mystery", "GirlsLove", "SliceOfLife",
+    "Adventure", "Romance", "Sci-Fi", "Erotica", "Hentai"];
 
 let typeSearch;
 let inputSearch;
@@ -33,7 +36,8 @@ async function animeSearch() {
         url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${inputSearch}`;
     }
     else if (typeSearch == 'type') {
-        url = `https://anime-db.p.rapidapi.com/${inputSearch}`;
+        url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${inputSearch}&genres=${await getSelectedGenres()}`;
+        console.log(url);
     }
     else if (typeSearch == 'byId') {
         url = `https://anime-db.p.rapidapi.com/anime/by-id/${parseInt(inputSearch)}`;
@@ -60,7 +64,7 @@ async function findAnime() {
         <p class="p-2 text-center">You did not enter your API key</p>`;
         return;
     }
-    if (typeSearch == 'title') {
+    if (typeSearch == 'title' || typeSearch == "type") {
         result = result.data;
         for (let data of result) {
             addAnimeCard(data.title, data.image, data.synopsis, data.genres, data.ranking, data.episodes);
@@ -71,4 +75,16 @@ async function findAnime() {
     }
 }
 
-export { searchButton,eraseButton,animeSearch,findAnime };
+async function getSelectedGenres() {
+    let selectedGenreString = "";
+    genresTab.forEach(genre => {
+        if (document.getElementById(genre).checked == true) {
+            selectedGenreString += `${genre}%2C`;
+        }
+    });
+    //console.log(selectedGenreString);
+    return selectedGenreString;
+}
+
+
+export { searchButton, eraseButton, animeSearch, findAnime };
