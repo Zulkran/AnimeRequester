@@ -8,7 +8,18 @@ const genresTab = ["Action", "Suspense", "Horror", "Ecchi", "AvantGarde", "Sport
 let typeSearch;
 let inputSearch;
 
+// Using prompt to get api key
+let userKey = prompt("Please enter your api key:");
+if (userKey !== null) {
+  alert(`Hello you have access to your application!`);
+} else {
+  alert("You canceled the input.");
+}
+
 async function animeSearch() {
+    if(userKey == null || userKey.length == 0) {
+        return null;
+    }
     let url;
     typeSearch = document.getElementById('category').value;
     inputSearch = document.getElementById("site-search").value;
@@ -16,7 +27,7 @@ async function animeSearch() {
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '24b8dadf2bmsh6a9192a82dab5cbp1fd844jsnef9b19c3e298',
+            'x-rapidapi-key': userKey,
             'x-rapidapi-host': 'anime-db.p.rapidapi.com'
         }
     };
@@ -48,6 +59,11 @@ async function findAnime() {
     clearAnime();
     animeContent.classList.remove("hidden");
     let result = await animeSearch();
+    if(result == null) {
+        animeContent.innerHTML += `<div class="text-black dark:text-white text-center mx-auto">
+        <p class="p-2 text-center">You did not enter your API key</p>`;
+        return;
+    }
     if (typeSearch == 'title' || typeSearch == "type") {
         result = result.data;
         for (let data of result) {
