@@ -1,11 +1,21 @@
 const APIButton = document.getElementById("APIButton");
 const APIPrompt = document.getElementById("promptPath");
+const updateAPIButton = document.getElementById("updateAPIButton");
+const inputAPIKey = document.getElementById("inputAPIKey");
 
 function openClosePrompt() {
-    APIPrompt.innerHTML += `<h1>Enter your API KEY :</h1>
-                <input class="m-2 p-2 rounded-md" type="text" placeholder="API Key...">
-                <button class="p-2 bg-gray-500 dark:bg-gray-900 rounded-md "><i class="fa-regular fa-pen-to-square fa-inverse"></i></button>`;
-    
+    if (APIPrompt.children.length > 0) { // il faut regarder si c'est hidden
+        console.log("hidden");
+        APIPrompt.classList.add("hidden");
+    }
+    else {
+        APIPrompt.classList.remove("hidden");
+        inputAPIKey.value = sessionStorage.getItem("userKey");
+    }
 }
 
-export { APIButton, APIPrompt, openClosePrompt };
+function updateAPI() {
+    sessionStorage.setItem("userKey", inputAPIKey.value);
+}
+
+export { APIButton, APIPrompt, openClosePrompt,updateAPI,updateAPIButton,inputAPIKey };
