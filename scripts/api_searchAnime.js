@@ -8,16 +8,9 @@ const genresTab = ["Action", "Suspense", "Horror", "Ecchi", "AvantGarde", "Sport
 let typeSearch;
 let inputSearch;
 
-// Using prompt to get api key
-let userKey = prompt("Please enter your api key:");
-if (userKey !== null) {
-  alert(`Hello you have access to your application!`);
-} else {
-  alert("You canceled the input.");
-}
-
 async function animeSearch() {
-    if(userKey == null || userKey.length == 0) {
+    const APIKey = sessionStorage.getItem('userKey');
+    if(APIKey == null || APIKey.length == 0) {
         return null;
     }
     let url;
@@ -27,7 +20,7 @@ async function animeSearch() {
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': userKey,
+            'x-rapidapi-key': APIKey,
             'x-rapidapi-host': 'anime-db.p.rapidapi.com'
         }
     };
@@ -82,7 +75,6 @@ async function getSelectedGenres() {
             selectedGenreString += `${genre}%2C`;
         }
     });
-    //console.log(selectedGenreString);
     return selectedGenreString;
 }
 
