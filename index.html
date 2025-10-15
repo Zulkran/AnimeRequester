@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Requester</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/ed4b06e923.js" crossorigin="anonymous"></script>
-    <script defer type="module" src="./scripts/main.js"></script>
+    <script defer src="https://kit.fontawesome.com/ed4b06e923.js" crossorigin="anonymous"></script>
+    <script type="module" src="./scripts/main.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -19,13 +19,14 @@
     <!-- API Button -->
     <div class="relative m-8">
         <div class="absolute top-0 left-0">
-            <button class="h-12 w-12 rounded-lg p-2 shadow-md dark:shadow-white hover:bg-gray-100 dark:hover:bg-gray-700" id="APIButton">
+            <button class="h-12 w-12 rounded-lg p-2 shadow-md dark:shadow-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" id="APIButton">
                 <i class="fa-solid fa-key fa-xl"></i>
             </button>
             <div class="m-4 p-4 bg-gray-300 dark:bg-gray-700 dark:text-white border rounded-lg shadow-md dark:shadow-white hidden" id="promptPath">
                 <h1>Enter your API KEY :</h1>
-                <input class="m-2 p-2 rounded-md" type="text" id="inputAPIKey" placeholder="API Key...">
+                <input class="m-2 p-2 rounded-md text-black" type="text" id="inputAPIKey" placeholder="API Key...">
                 <button class="p-2 bg-gray-500 dark:bg-gray-900 rounded-md " id="updateAPIButton"><i class="fa-regular fa-pen-to-square fa-inverse"></i></button>
+                <p class="text-green-600 hidden" id="text_success">Your key has update</p>
             </div>
         </div>
     </div>

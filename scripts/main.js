@@ -1,6 +1,7 @@
 import { searchButton,eraseButton,animeSearch,findAnime } from './api_searchAnime.js';
 import { darkButton,initialiseDark, toggleTheme } from './darkMode.js';
 import { APIButton, APIPrompt, openClosePrompt,updateAPI,updateAPIButton,inputAPIKey } from './APIKeyButton.js';
+import {animeContent, addAnimeCard, clearAnime} from './addCard.js';
 
 initialiseDark();
 

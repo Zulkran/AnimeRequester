@@ -16,7 +16,6 @@ async function animeSearch() {
     let url;
     typeSearch = document.getElementById('category').value;
     inputSearch = document.getElementById("site-search").value;
-    console.log(inputSearch);
     const options = {
         method: 'GET',
         headers: {
@@ -40,11 +39,14 @@ async function animeSearch() {
     }
     try {
         const response = await fetch(url, options);
+        if(!response.ok) {
+            return null;
+        }
         const result = (await response.json());
-        console.log(result);
         return result;
     } catch (error) {
         console.error(error);
+        return null;
     }
 }
 
@@ -53,14 +55,20 @@ async function findAnime() {
     animeContent.classList.remove("hidden");
     let result = await animeSearch();
     if(result == null) {
-        animeContent.innerHTML += `<div class="text-black dark:text-white text-center mx-auto">
-        <p class="p-2 text-center">You did not enter your API key</p>`;
+        animeContent.innerHTML = `
+        <p class="p-2 text-center mx-auto">You did not enter your API key or your API Key is not valid</p>`;
         return;
     }
     if (typeSearch == 'title' || typeSearch == "type") {
         result = result.data;
-        for (let data of result) {
-            addAnimeCard(data.title, data.image, data.synopsis, data.genres, data.ranking, data.episodes);
+        if(result.length > 0) {
+            for (let data of result) {
+                addAnimeCard(data.title, data.image, data.synopsis, data.genres, data.ranking, data.episodes);
+            }
+        }
+        else {
+            animeContent.innerHTML = `
+            <p class="p-2 text-center mx-auto">No results for this search</p>`;
         }
     }
     else {
@@ -77,6 +85,5 @@ async function getSelectedGenres() {
     });
     return selectedGenreString;
 }
-
 
 export { searchButton, eraseButton, animeSearch, findAnime };
