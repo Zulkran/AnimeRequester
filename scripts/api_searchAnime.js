@@ -1,9 +1,11 @@
-import { animeContent, addAnimeCard, clearAnime } from './addCard.js';
+import { animeContent, addAnimeCard, addGenreCheckbox, clearAnime } from './addHTMLFunction.js';
 const searchButton = document.getElementById("searchButton");
 const eraseButton = document.getElementById("eraseButton");
 const genresTab = ["Action", "Suspense", "Horror", "Ecchi", "AvantGarde", "Sports", "Supernatural",
     "Fantasy", "BoysLove", "Drama", "Comedy", "Mystery", "GirlsLove", "SliceOfLife",
     "Adventure", "Romance", "Sci-Fi", "Erotica", "Hentai"];
+
+const selectElement = document.getElementById("category");
 
 let typeSearch;
 let inputSearch;
@@ -85,5 +87,16 @@ async function getSelectedGenres() {
     });
     return selectedGenreString;
 }
+
+selectElement.addEventListener("change", (event) => {
+    console.log(event.target.value);
+    if (event.target.value == "type") {
+        addGenreCheckbox(true);
+    }
+    else {
+        addGenreCheckbox(false);
+    }
+});
+
 
 export { searchButton, eraseButton, animeSearch, findAnime };
