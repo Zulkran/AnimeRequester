@@ -5,7 +5,7 @@ const genresTab = ["Action", "Suspense", "Horror", "Ecchi", "AvantGarde", "Sport
     "Fantasy", "BoysLove", "Drama", "Comedy", "Mystery", "GirlsLove", "SliceOfLife",
     "Adventure", "Romance", "Sci-Fi", "Erotica", "Hentai"];
 
-const selectElement = document.querySelector(".category");
+const selectElement = document.getElementById("category");
 
 let typeSearch;
 let inputSearch;
@@ -81,7 +81,6 @@ selectElement.addEventListener("change", (event) => {
         addGenreCheckbox(false);
     }
 });
-
 
 
 export { searchButton, eraseButton, animeSearch, findAnime };
