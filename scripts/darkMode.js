@@ -1,8 +1,8 @@
 const darkButton = document.getElementById("darkModeButton");
 
 function initialiseDark() {
-    if (localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (sessionStorage.theme === 'dark' ||
+        (!('theme' in sessionStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
     } else {
         document.documentElement.classList.remove('dark');
@@ -11,7 +11,7 @@ function initialiseDark() {
 
 function toggleTheme() {
     const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.theme = isDark ? 'dark' : 'light';
+    sessionStorage.theme = isDark ? 'dark' : 'light';
 }
 
 export { darkButton,initialiseDark, toggleTheme };
