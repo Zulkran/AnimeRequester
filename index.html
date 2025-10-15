@@ -19,14 +19,20 @@
     <!-- API Button -->
     <div class="relative m-8">
         <div class="absolute top-0 left-0">
-            <button class="h-12 w-12 rounded-lg p-2 shadow-md dark:shadow-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" id="APIButton">
+            <button
+                class="h-12 w-12 rounded-lg p-2 shadow-md dark:shadow-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                id="APIButton">
                 <i class="fa-solid fa-key fa-xl"></i>
             </button>
-            <div class="m-4 p-4 bg-gray-300 dark:bg-gray-700 dark:text-white border rounded-lg shadow-md dark:shadow-white hidden" id="promptPath">
+            <div class="m-4 p-4 bg-[#d9c096] dark:bg-gray-700 dark:text-white border rounded-lg shadow-md dark:shadow-white hidden"
+                id="promptPath">
                 <h1>Enter your API KEY :</h1>
                 <input class="m-2 p-2 rounded-md text-black" type="text" id="inputAPIKey" placeholder="API Key...">
                 <button class="p-2 bg-gray-500 dark:bg-gray-900 rounded-md " id="updateAPIButton"><i class="fa-regular fa-pen-to-square fa-inverse"></i></button>
-                <p class="text-green-600 hidden" id="text_success">Your key has update</p>
+                <p class="text-green-600 dark:text-green-300 hidden" id="text_success">Your key has update</p>
+                <div class="mt-4 p-2 mx-auto rounded-md bg-gray-200">
+                    <p>You have no key ? -> <a class="text-blue-600 underline hover:text-blue-800 visited:text-purple-600" href="https://rapidapi.com/brian.rofiq/api/anime-db/playground/apiendpoint_d5c3dae2-6017-48df-a7cd-be65865d15bc">RapidAPI</a></p>
+                </div>
             </div>
         </div>
     </div>
@@ -34,7 +40,9 @@
     <!-- Dark Mode Button -->
     <div class="relative m-8">
         <div class="absolute top-0 right-0">
-            <button class="h-12 w-12 rounded-lg p-2 shadow-md dark:shadow-white hover:bg-gray-100 dark:hover:bg-gray-700" id="darkModeButton">
+            <button
+                class="h-12 w-12 rounded-lg p-2 shadow-md dark:shadow-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                id="darkModeButton">
                 <svg class="fill-violet-700 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                 </svg>
@@ -54,21 +62,20 @@
     <div
         class="bg-[#ece0d1] dark:bg-[#967259] rounded-lg m-auto mt-6 text-center text-md items-center p-12  w-2/3 shadow-lg">
         <div>
-        <select name="category" id="category" class="m-2 p-2 border rounded-lg p-1">
-            <option value="title">Title</option>
-            <option value="type">Genre</option>
-            <option value="byId">ID</option>
-            <option value="rank">Ranking</option>
-        </select>
-        <input type="search" id="site-search" placeholder="Naruto..." name="animeSearch" class="m-2 w-2/3 p-2 border rounded-lg">
-        <button id="searchButton"
-            class="p-2 m-2 text-black bg-white rounded-lg shawdow-lg hover:bg-gray-300">
-            <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-            <span class="sr-only">Search</span>
-        </button>
-        <button id="eraseButton"
-            class="p-2 m-2 text-black bg-white rounded-lg shawdow-lg hover:bg-gray-300">
-            <i class="fa-regular fa-circle-xmark fa-xl"></i></button>
+            <select name="category" id="category" class="m-2 p-2 border rounded-lg p-1">
+                <option value="title">Title</option>
+                <option value="type">Genre</option>
+                <option value="byId">ID</option>
+                <option value="rank">Ranking</option>
+            </select>
+            <input type="search" id="site-search" placeholder="Naruto..." name="animeSearch"
+                class="m-2 w-2/3 p-2 border rounded-lg">
+            <button id="searchButton" class="p-2 m-2 text-black bg-white rounded-lg shawdow-lg hover:bg-gray-300">
+                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                <span class="sr-only">Search</span>
+            </button>
+            <button id="eraseButton" class="p-2 m-2 text-black bg-white rounded-lg shawdow-lg hover:bg-gray-300">
+                <i class="fa-regular fa-circle-xmark fa-xl"></i></button>
         </div>
         <div class="mx-auto inline-flex text-center items-center grid grid-cols-2 lg:grid-cols-4">
             <div class="flex items-center cursor-pointer relative">

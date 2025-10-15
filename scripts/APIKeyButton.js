@@ -5,24 +5,32 @@ const inputAPIKey = document.getElementById("inputAPIKey");
 const textSuccess = document.getElementById("text_success");
 
 function openClosePrompt() {
-    if (!APIPrompt.classList.contains('hidden')) { // il faut regarder si c'est hidden
+    if (!APIPrompt.classList.contains('hidden')) {
         APIPrompt.classList.add("hidden");
     }
     else {
         APIPrompt.classList.remove("hidden");
-        inputAPIKey.value = sessionStorage.getItem("userKey");
+        verifyAPIKeyValue();
     }
 }
 
 function updateAPI() {
-    console.log(inputAPIKey.value);
     sessionStorage.setItem("userKey", inputAPIKey.value);
-    console.log(inputAPIKey.value);
-    inputAPIKey.value = sessionStorage.getItem("userKey");
+
+    verifyAPIKeyValue();
+    
     textSuccess.classList.remove("hidden");
     setTimeout(() => {
         textSuccess.classList.add("hidden");
     }, 5000);
+}
+
+function verifyAPIKeyValue() {
+    if(sessionStorage.getItem("userKey") == null || sessionStorage.getItem("userKey") == "null") {
+        inputAPIKey.value = "";
+    } else {
+        inputAPIKey.value = sessionStorage.getItem("userKey");
+    }
 }
 
 export { APIButton, APIPrompt, openClosePrompt, updateAPI, updateAPIButton, inputAPIKey };
